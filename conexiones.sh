@@ -24,7 +24,7 @@ fi
 # lo metemos en el archivo log.txt y contamos sus líneas con wc -l.
 
 echo `netstat -plan | grep "ESTABLECIDO" |grep -e ":80" -e ":443" -e ":21" | awk {'print $5'} | uniq >> /root/jvscripts/log.txt`
-contador=`wc -l /root/.jvscripts/log.txt  | cut -d " " -f1`
+contador=`wc -l /root/jvscripts/log.txt  | cut -d " " -f1`
 
 #Condición para entrar en el bucle:
 opcion=0
