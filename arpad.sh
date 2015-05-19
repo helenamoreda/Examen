@@ -1,16 +1,10 @@
 #!/bin/bash
 
-<<<<<<< HEAD
 #Autora: Helena Moreda Boza
 #Fichero: aplicaciones.sh
 #Versión:09-04-2015
 #Resumen: script que 
 
-=======
-#Helena Moreda Boza
-
-#arpad
->>>>>>> 863871f72b9918a32672141ec2f68536584667e7
 
 #Obtengo la ip del router donde:
 # -n Muestra la tabla de enrutamiento en formato numérico [dirección IP]
@@ -38,11 +32,7 @@ comprobar=`arp -n|grep -w $iprouter|tr -s " "|cut -d " " -f3`
 mac=`cat /etc/mac_router.txt`
 	if [ $mac != $comprobar ]
 		then
-<<<<<<< HEAD
 			`zenity --warning --text="La mac del router ha cambiado"`
-=======
-			`zenity --warning --text="La mac ha cambiado"`
->>>>>>> 863871f72b9918a32672141ec2f68536584667e7
 	fi
 	sleep 2m
 done
