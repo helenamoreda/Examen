@@ -12,6 +12,7 @@ nmap $IPservidor -p 3333 | grep 3333 > /root/.jvscripts/servidor/conexion.txt
 
 estado=`cat /root/.jvscripts/servidor/conexion.txt`
 estado2="3333/tcp open  dec-notes"
+estado3="3333/tcp closed  dec-notes"
 
 if [ "$estado" == "$estado2" ];
 	then
@@ -20,4 +21,11 @@ if [ "$estado" == "$estado2" ];
 		/root/.jvscripts/comprobacion.sh &
 		/root/.jvscripts/servicio-conexiones.sh &
 		/root/.jvscripts/servicio-aplicaciones.sh &
+fi
+
+if [ "$estado" == "$estado3" ];
+	then
+		killall aplicaciones.sh
+		killall conexiones.sh
+		killall sleep
 fi
