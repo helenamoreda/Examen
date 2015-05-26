@@ -26,7 +26,7 @@ do
 
 	echo `ps -A | grep -w -e "chrome" -e "firefox" -e "evince" -e "empathy"  -e "gedit" -e "vi" -e "nano" -e "soffice.bin" | awk {'print $4'} > /root/.jvscripts/logsapps/apps.txt`
 
-if test -s /root/.jvscripts/apps.txt
+if test -s /root/.jvscripts/logsapps/apps.txt
 	then
 		IPuser=`/sbin/ifconfig ${iface} | grep 'inet' | cut -d: -f2 | cut -d " " -f1 | grep -v 127`
 		chmod 777 /root/.jvscripts/logsapps/apps.txt
