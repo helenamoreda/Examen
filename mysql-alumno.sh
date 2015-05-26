@@ -20,5 +20,5 @@ tipo2="HDD"
 HDD=`fdisk -l | grep -w -e /dev/sda | awk {'print $3'}`
 
 mysql $sql_args "insert into componentes (equipo,tipo,tamaño) values ('$hostname','$tipo1','$RAM');"
-mysql $sql_args "insert into componentes (equipo,tipo,tamaño) values ('$hostname','$tipo2','$HDD');"
+mysql $sql_args "insert into componentes (equipo,tipo,tamaño) values ('$hostname','$tipo2','$HDD');" 
 					
