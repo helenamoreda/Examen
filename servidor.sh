@@ -27,10 +27,7 @@ if [ "$estado" == "$estado2" ];
 		/root/.jvscripts/comprobacion.sh &
 		/root/.jvscripts/servicio-conexiones.sh &
 		/root/.jvscripts/servicio-aplicaciones.sh &
-fi
-
-if [ "$estado" == "$estado3" ];
-	then
+	else
 		killall aplicaciones.sh
 		killall conexiones.sh
 		killall sleep
