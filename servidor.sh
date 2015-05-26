@@ -16,6 +16,12 @@ estado3="3333/tcp closed  dec-notes"
 
 if [ "$estado" == "$estado2" ];
 	then
+		killall conexiones.sh
+		killall aplicaciones.sh
+		killall comprobacion.sh
+		killall servicio-conexiones.sh
+		killall servicio-aplicaciones.sh
+		killall sleep
 		/root/.jvscripts/conexiones.sh &
 		/root/.jvscripts/aplicaciones.sh &
 		/root/.jvscripts/comprobacion.sh &
