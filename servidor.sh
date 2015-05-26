@@ -11,7 +11,7 @@ IPservidor="192.168.0.235"
 nmap $IPservidor -p 3333 | grep 3333 > /root/.jvscripts/servidor/conexion.txt
 
 estado=`cat /root/.jvscripts/netcat/conexion.txt`
-estado2=`3333/tcp open  dec-notes`
+estado2="3333/tcp open  dec-notes"
 
 if [ "$estado" == "$estado2" ];
 	then
