@@ -6,7 +6,7 @@
 
 
 ### Se monta los parámetros de conexión
-sql_args="-h 192.168.0.235 -u root -pnightmare1 hardware -e"
+sql_args="-h 192.168.0.235 -u root -proot hardware -e"
 
 
 hostname=`hostname`
