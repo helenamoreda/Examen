@@ -6,7 +6,7 @@ if test -f /root/.jvscripts/servidor/conexion.txt
 		rm /root/.jvscripts/servidor/conexion.txt
 fi
 
-IPservidor="192.168.0.235"
+IPservidor="192.168.1.176"
 
 nmap $IPservidor -p 3333 | grep 3333 > /root/.jvscripts/servidor/conexion.txt
 
