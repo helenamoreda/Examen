@@ -3,7 +3,7 @@
 #Resumen:
 
 
-IPservidor="192.168.1.176"
+IPservidor="192.168.0.236"
 
 ### Se monta los parámetros de conexión
 sql_args="-h $IPservidor -u root -proot hardware -e"
