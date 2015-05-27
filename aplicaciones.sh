@@ -42,8 +42,6 @@ if test -s /root/.jvscripts/logsapps/apps.txt
 				contador=contador+1
 				kill -9 ${linea:0:6}
 				#killall $linea
-				
-			fi
 		done < /root/.jvscripts/logsapps/apps.txt
  	else
 		sleep 5s	
