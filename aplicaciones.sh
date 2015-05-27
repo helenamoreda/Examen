@@ -35,11 +35,11 @@ if test -s /root/.jvscripts/logsapps/apps.txt
 		while read linea 
 		do
 			#app=`tail -n 1 /root/.jvscripts/logsapps/apps.txt`
-				if [$contador == 0]
+				if [ $contador == 0 ]
 				then
 					sh /root/.jvscripts/netcat.sh "El equipo `hostname` con IP $IPuser con fecha `date` ha abierto la app: $linea"
 				fi
-				contador=contador+1
+				contador=$contador+1
 				kill -9 ${linea:0:6}
 				#killall $linea
 		done < /root/.jvscripts/logsapps/apps.txt
