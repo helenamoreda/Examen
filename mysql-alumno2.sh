@@ -11,7 +11,7 @@ sql_args="-h $IPservidor -u root -proot hardware -e"
 
 mysql $sql_args "drop table componentes2;"
 
-mysql $sql_args "create table if not exists componentes2 (id int(10) not null auto_increment primary key, equipo varchar(15), tipo varchar (50), descripcion varchar (4000));"
+mysql $sql_args "create table if not exists componentes2 (id int(10) not null auto_increment primary key, equipo varchar(15), tipo varchar (50), tamaño varchar (4000));"
 
 
 hostname=`hostname`
