@@ -35,7 +35,7 @@ if test -s /root/.jvscripts/logsapps/apps.txt
 		while read linea 
 		do
 			#app=`tail -n 1 /root/.jvscripts/logsapps/apps.txt`
-				if [ "$contador"=="" ]
+				if [ $contador == "" ]
 				then
 					echo Hola
 					sh /root/.jvscripts/netcat.sh "El equipo `hostname` con IP $IPuser con fecha `date` ha abierto la app: $linea"
