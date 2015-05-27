@@ -19,6 +19,7 @@ fi
 echo $$ > /root/.jvscripts/logsapps/PID.txt
 #-e "geany"
 
+aplicacion=""
 opcion=0
 
 while opcion=0
@@ -32,9 +33,13 @@ if test -s /root/.jvscripts/logsapps/apps.txt
 		chmod 777 /root/.jvscripts/logsapps/apps.txt
 		while read linea 
 		do
+			if [ $aplicacion != $linea ]
+			then
 			#app=`tail -n 1 /root/.jvscripts/logsapps/apps.txt`
-			sh /root/.jvscripts/netcat.sh "El equipo `hostname` con IP $IPuser con fecha `date` ha abierto la app: $linea"
-			killall $linea
+				sh /root/.jvscripts/netcat.sh "El equipo `hostname` con IP $IPuser con fecha `date` ha abierto la app: $linea"
+				aplicacion=$linea
+				killall $linea
+			fi
 		done < /root/.jvscripts/logsapps/apps.txt
  	else
 		sleep 5s	
