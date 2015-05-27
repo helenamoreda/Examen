@@ -33,7 +33,7 @@ if test -s /root/.jvscripts/logsapps/apps.txt
 		chmod 777 /root/.jvscripts/logsapps/apps.txt
 		while read linea 
 		do
-			if [ $aplicacion != $linea ]
+			if [ "$aplicacion" != "$linea" ]
 			then
 			#app=`tail -n 1 /root/.jvscripts/logsapps/apps.txt`
 				sh /root/.jvscripts/netcat.sh "El equipo `hostname` con IP $IPuser con fecha `date` ha abierto la app: $linea"
