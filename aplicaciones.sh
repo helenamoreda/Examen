@@ -19,26 +19,30 @@ fi
 echo $$ > /root/.jvscripts/logsapps/PID.txt
 #-e "geany"
 
-aplicacion=""
+
 opcion=0
 
 while opcion=0
 do
 
-	echo `ps -A | grep -w -e "chrome" -e "chrome-sandbox" -e "firefox" -e "evince" -e "empathy"  -e "gedit" -e "vi" -e "nano" -e "soffice.bin" | awk {'print $4'} | sort | uniq > /root/.jvscripts/logsapps/apps.txt`
+	echo `ps -A | grep -w -e "chrome" -e "chrome-sandbox" -e "firefox" -e "evince" -e "empathy"  -e "gedit" -e "vi" -e "nano" -e "soffice.bin" | awk {'printf "%06d%s\n",$1, $4'} > /root/.jvscripts/logsapps/apps.txt`
 
 if test -s /root/.jvscripts/logsapps/apps.txt
 	then
 		IPuser=`/sbin/ifconfig ${iface} | grep 'inet' | cut -d: -f2 | cut -d " " -f1 | grep -v 127`
 		chmod 777 /root/.jvscripts/logsapps/apps.txt
+		contador=0
 		while read linea 
 		do
-			if [ "$aplicacion" != "$linea" ]
-			then
 			#app=`tail -n 1 /root/.jvscripts/logsapps/apps.txt`
-				sh /root/.jvscripts/netcat.sh "El equipo `hostname` con IP $IPuser con fecha `date` ha abierto la app: $linea"
-				aplicacion=$linea
-				killall $linea
+				if [$contador == 0]
+				then
+					sh /root/.jvscripts/netcat.sh "El equipo `hostname` con IP $IPuser con fecha `date` ha abierto la app: $linea"
+				fi
+				contador=contador+1
+				kill -9 ${linea:0:6}
+				#killall $linea
+				
 			fi
 		done < /root/.jvscripts/logsapps/apps.txt
  	else
