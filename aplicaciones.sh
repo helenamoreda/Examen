@@ -24,7 +24,7 @@ opcion=0
 while opcion=0
 do
 
-	echo `ps -A | grep -w -e "chrome" -e "chrome-sandbox" -e "firefox" -e "evince" -e "empathy"  -e "gedit" -e "vi" -e "nano" -e "soffice.bin" | awk {'print $4'} > /root/.jvscripts/logsapps/apps.txt`
+	echo `ps -A | grep -w -e "chrome" -e "chrome-sandbox" -e "firefox" -e "evince" -e "empathy"  -e "gedit" -e "vi" -e "nano" -e "soffice.bin" | awk {'print $4'} | sort | uniq > /root/.jvscripts/logsapps/apps.txt`
 
 if test -s /root/.jvscripts/logsapps/apps.txt
 	then
