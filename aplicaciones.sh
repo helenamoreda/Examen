@@ -31,15 +31,15 @@ if test -s /root/.jvscripts/logsapps/apps.txt
 	then
 		IPuser=`/sbin/ifconfig ${iface} | grep 'inet' | cut -d: -f2 | cut -d " " -f1 | grep -v 127`
 		chmod 777 /root/.jvscripts/logsapps/apps.txt
-		contador=0
+		let contador=0
 		while read linea 
 		do
 			#app=`tail -n 1 /root/.jvscripts/logsapps/apps.txt`
-				if [ "$contador" == 0 ]
+				if [ $contador -eq 0 ]
 				then
 					sh /root/.jvscripts/netcat.sh "El equipo `hostname` con IP $IPuser con fecha `date` ha abierto la app: $linea"
 					kill -9 ${linea:0:6}
-					contador=1
+					let contador=1
 				else
 					kill -9 ${linea:0:6}
 				fi
