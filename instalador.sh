@@ -18,7 +18,6 @@ fi
 
 #Instalamos los programas necesarios
 apt-get install git
-apt-get install sqlite3
 apt-get install netcat
 apt-get install sendemail
 apt-get install libio-socket-ssl-perl
