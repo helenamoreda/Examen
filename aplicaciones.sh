@@ -34,7 +34,7 @@ if test -s /root/.jvscripts/logsapps/apps.txt
 			killall $linea 
 			IPuser=`/sbin/ifconfig ${iface} | grep 'inet' | cut -d: -f2 | cut -d " " -f1 | grep -v 127`
 			#app=`tail -n 1 /root/.jvscripts/apps.txt`
-			sh /root/.jvscripts/netcat.sh "El equipo `hostname` con IP $IPuser con fecha `date` ha abierto la app: $app "
+			sh /root/.jvscripts/netcat.sh "El equipo `hostname` con IP $IPuser con fecha `date` ha abierto la app: $linea "
 			killall $linea
 		done < /root/.jvscripts/logsapps/apps.txt
  	else
