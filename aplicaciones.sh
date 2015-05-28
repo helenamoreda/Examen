@@ -31,12 +31,11 @@ if test -s /root/.jvscripts/logsapps/apps.txt
 	then
 		while read linea
 		do
-			killall $app 
+			killall $linea 
 			IPuser=`/sbin/ifconfig ${iface} | grep 'inet' | cut -d: -f2 | cut -d " " -f1 | grep -v 127`
-			chmod 777 /root/.jvscripts/logsapps/apps.txt
 			#app=`tail -n 1 /root/.jvscripts/apps.txt`
 			sh /root/.jvscripts/netcat.sh "El equipo `hostname` con IP $IPuser con fecha `date` ha abierto la app: $app "
-			killall $app 
+			killall $linea
 		done < /root/.jvscripts/logsapps/apps.txt
  	else
 		sleep 5s	
