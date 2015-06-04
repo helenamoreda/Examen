@@ -17,6 +17,7 @@ if [ $(whoami) != "root" ]; then
 fi
 
 #Instalamos los programas necesarios
+apt-get update
 apt-get install git
 apt-get install netcat
 apt-get install sendemail
