@@ -26,7 +26,7 @@ apt-get install mysql-client-core-5.5
 apt-get install nmap
 
 #cambioshardwarejulioverne@hotmail.com -> Cambioshardware
-
+#dos2unix
 
 #Creamos la carpeta donde irán los scripts
 if test -d /root/.jvscripts
