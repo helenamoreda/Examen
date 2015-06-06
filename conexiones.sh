@@ -23,8 +23,6 @@ if test -f /root/.jvscripts/logsconexiones/PID.txt
 		rm /root/.jvscripts/logsconexiones/PID.txt
 fi
 
-#Guardo el PID del demonio en un txt
-echo $$ > /root/.jvscripts/logsconexiones/PID.txt
 
 
 #El comando NETSTAT muestra un listado de las conexiones activas del servidor, con GREP filtramos sólo 
