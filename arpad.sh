@@ -10,29 +10,29 @@
 # -n Muestra la tabla de enrutamiento en formato numérico [dirección IP]
 # tr -s quita los espacios
 # cut corta la segunda columna
-iprouter=`route -n|grep UG |tr -s " "|cut -d " " -f2`
+iprouter=`sudo route -n|grep UG |tr -s " "|cut -d " " -f2`
 
 #Obtengo la mac del router donde:
 
-macrouter=`arp -n|grep -w $iprouter|tr -s " "|cut -d " " -f3`
+macrouter=`sudo arp -n|grep -w $iprouter|tr -s " "|cut -d " " -f3`
 
 if test -f /etc/mac_router.txt
 	then 
-		echo $macrouter > /etc/mac_router.txt	
+		sudo echo $macrouter > /etc/mac_router.txt	
 else
-	touch /etc/mac_router.txt
-	echo $macrouter > /etc/mac_router.txt
+	sudo touch /etc/mac_router.txt
+	sudo echo $macrouter > /etc/mac_router.txt
 	
 fi
 	
 opcion=0
-while [ $opcion == 0 ] 
+while [ $opcion -eq 0 ];
 do
-comprobar=`arp -n|grep -w $iprouter|tr -s " "|cut -d " " -f3`
-mac=`cat /etc/mac_router.txt`
+comprobar=`sudo arp -n|grep -w $iprouter|tr -s " "|cut -d " " -f3`
+mac=`sudo cat /etc/mac_router.txt`
 	if [ "$mac" != "$comprobar" ]
 		then
-			`zenity --warning --text="La mac del router ha cambiado"`
+			sudo zenity --warning --text="La mac del router ha cambiado"
 	fi
 	sleep 2m
 done
