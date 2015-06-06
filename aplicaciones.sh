@@ -16,7 +16,7 @@ if test -f /root/.jvscripts/logsapps/PID.txt
 		rm /root/.jvscripts/logsapps/PID.txt
 fi
 
-echo $$ > /root/.jvscripts/logsapps/PID.txt
+
 #-e "geany"
 
 
