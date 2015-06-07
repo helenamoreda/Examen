@@ -31,6 +31,6 @@ tamaño2=`mysql $sql_args "select tamaño from componentes2 as t1 where not exis
 
 if [ "$tipocambiado" != "" ]
 	then
-		sendemail -f cambioshardwarejulioverne@hotmail.com -t helena1094@hotmail.com -s smtp.live.com -u \ "Asunto Cambios en el hardware" -m "Ha habido un cambio en el componente $tipo-cambiado del equipo $hostname. Su anterior capacidad era $tamaño1 y ahora es $tamaño2" -v -xu cambioshardwarejulioverne@hotmail.com -xp Cambioshardware -o tls=yes
+		sendemail -f cambioshardwarejulioverne@hotmail.com -t helena1094@hotmail.com -s smtp.live.com -u \ "Asunto Cambios en el hardware" -m "Ha habido un cambio en el componente $tipocambiado del equipo $hostname. Su anterior capacidad era $tamaño1 y ahora es $tamaño2" -v -xu cambioshardwarejulioverne@hotmail.com -xp Cambioshardware -o tls=yes
 fi
 					
