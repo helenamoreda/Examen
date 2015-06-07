@@ -32,7 +32,8 @@ comprobar=`sudo arp -n|grep -w $iprouter|tr -s " "|cut -d " " -f3`
 mac=`sudo cat /etc/mac_router.txt`
 	if [ "$mac" != "$comprobar" ]
 		then
-			 DISPLAY=:0 zenity --warning --text="La mac del router ha cambiado"
+			xhost local:
+			DISPLAY=:0 zenity --warning --text="La mac del router ha cambiado"
 	fi
 done
 	
