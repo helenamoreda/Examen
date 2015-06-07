@@ -18,7 +18,7 @@ macrouter=`sudo arp -n|grep -w $iprouter|tr -s " "|cut -d " " -f3`
 
 if test -f /etc/mac_router.txt
 	then 
-		sudo echo $macrouter > /etc/mac_router.txt	
+		echo ""	
 else
 	sudo touch /etc/mac_router.txt
 	sudo echo $macrouter > /etc/mac_router.txt
