@@ -1,4 +1,4 @@
-#Fichero: sqlite.sh
+#Fichero: mysql-alumno2.sh
 #Versión:09-05-2015
 #Resumen:
 
