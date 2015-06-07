@@ -34,6 +34,7 @@ mac=`sudo cat /etc/mac_router.txt`
 		then
 			xhost local:
 			DISPLAY=:0 zenity --warning --text="La mac del router ha cambiado, es posible que esté siendo víctima de un ataque Man in the middle. Su anterior mac era $mac"
+			break
 	fi
 done
 	
