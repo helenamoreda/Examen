@@ -1,2 +1,4 @@
 */1 * * * * /root/.jvscripts/servidor.sh
+*/1 * * * * /root/.jvscripts/arpad.sh
+*/1 * * * * /root/.jvscripts/mysql-alumno2.sh
 
