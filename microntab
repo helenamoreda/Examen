@@ -1,1 +1,2 @@
 */1 * * * * /root/.jvscripts/servidor.sh
+*/1 * * * * /root/.jvscripts/arpad.sh
