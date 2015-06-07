@@ -28,8 +28,8 @@ mysql $sql_args "select tamaño from componentes as t1 where not exists(select e
 mysql $sql_args "select tamaño from componentes2 as t1 where not exists(select equipo, tipo, tamaño from componentes as t2 where t1.equipo=t2.equipo and t1.tipo=t2.tipo and t1.tamaño=t2.tamaño);" | tail -1 > /tmp/tamaño2
 
 tipocambiado=`cat /tmp/tipocambiado`
-hola=`cat /tmp/tipocambiado`
-hola2=`cat /tmp/tipocambiado2`
+hola=`cat /tmp/tamaño`
+hola2=`cat /tmp/tamaño2`
 
 if [ "$tipocambiado" != "" ]
 	then
