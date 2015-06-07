@@ -18,7 +18,7 @@ RAM=`free | grep Mem |  awk {'print $2'}`
 
 
 tipo2="HDD"
-HDD=`fdisk -l | grep -w -e /dev/sda | awk {'print $3'}`
+HDD=`sudo fdisk -l | grep -w -e /dev/sda | awk {'print $3'}`
 
 mysql $sql_args "insert into componentes2 (equipo,tipo,tamaño) values ('$hostname','$tipo1','$RAM');"
 mysql $sql_args "insert into componentes2 (equipo,tipo,tamaño) values ('$hostname','$tipo2','$HDD');"
