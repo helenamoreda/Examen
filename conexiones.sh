@@ -50,7 +50,7 @@ do
 					IPuser=`/sbin/ifconfig ${iface} | grep 'inet' | cut -d: -f2 | cut -d " " -f1 | grep -v 127`
 					conexion=`tail -n 1 /root/.jvscripts/logsconexiones/log.txt`
 					bash /root/.jvscripts/netcat.sh "El equipo `hostname` con IP $IPuser con fecha `date` ha iniciado una conexión a esta IP $conexion  "
-					
+					echo "El equipo `hostname` con IP $IPuser con fecha `date` ha iniciado una conexión a esta IP $conexion " >>  /root/.jvscripts/logsconexiones/logfinal.txt
 				else
 					bash /root/.jvscripts/netcat.sh "El equipo `hostname` con IP $IPuser con fecha `date` ha cerrado una conexión"
 			fi
