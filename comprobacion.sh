@@ -10,7 +10,7 @@ hostname=`hostname`
 PID1=`cat /root/.jvscripts/hardware/PID.txt`
 echo $PID1
 
-PID2=`ps -a | grep -e mysql-alumno2.sh | awk {'print $1'}`
+PID2=`ps -aux | grep -e mysql-alumno2.sh | awk {'print $2'}`
 echo $PID2
 
 
