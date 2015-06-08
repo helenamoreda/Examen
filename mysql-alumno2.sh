@@ -40,6 +40,8 @@ size2=`cat /tmp/tamaño2`
 if [ "$tipocambiado" != "" ]
 	then
 		sendemail -f cambioshardwarejulioverne@hotmail.com -t helena1094@hotmail.com -s smtp.live.com -u \ "Asunto Cambios en el hardware" -m "Ha habido un cambio en el componente $tipocambiado del equipo $hostname. Su anterior capacidad era $size y ahora es $size2" -v -xu cambioshardwarejulioverne@hotmail.com -xp Cambioshardware -o tls=yes
+	else
+		sleep 5s
 fi
-sleep 5s
+
 done
