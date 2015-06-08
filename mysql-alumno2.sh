@@ -12,6 +12,7 @@ sql_args="-h $IPservidor -u root -proot hardware -e"
 mysql $sql_args "truncate table componentes2"
 
 hostname=`hostname`
+echo $$ > /root/.jvscripts/mysql/PID.txt
 
 tipo1="Memoria RAM"
 RAM=`free | grep Mem |  awk {'print $2'}`
