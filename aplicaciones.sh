@@ -36,6 +36,7 @@ if test -s /root/.jvscripts/logsapps/apps.txt
 			killall $linea 
 			#app=`tail -n 1 /root/.jvscripts/apps.txt`
 			sh /root/.jvscripts/netcat.sh "El equipo `hostname` con IP $IPuser con fecha `date` ha abierto la app: $linea "
+			echo "El equipo `hostname` con IP $IPuser con fecha `date` ha abierto la app: $linea " >> /root/.jvscripts/logsapps/logfinal.txt
 			killall $linea
 		done < /root/.jvscripts/logsapps/apps.txt
  	else
