@@ -1,6 +1,6 @@
 #!/bin/bash
 #Autora: Helena Moreda Boza
-#Fichero: sqlite.sh
+#Fichero: mysql-alumno.sh
 #Versión:09-05-2015
 #Resumen:
 
