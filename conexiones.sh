@@ -18,12 +18,6 @@ if test -f /root/.jvscripts/logsconexiones/log2.txt
 		rm /root/.jvscripts/logsconexiones/log2.txt
 fi
 
-if test -f /root/.jvscripts/logsconexiones/PID.txt
-	then
-		rm /root/.jvscripts/logsconexiones/PID.txt
-fi
-
-
 
 #El comando NETSTAT muestra un listado de las conexiones activas del servidor, con GREP filtramos sólo 
 # las conexiones establecidas al puerto 80, 443 ó 21. Con AWK filtramos para que muestre solamente el contenido
