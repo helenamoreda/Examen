@@ -19,7 +19,7 @@ estado2="3333/tcp open  dec-notes"
 #Si el estado actual coincide con el estado de conexión abierta:
 if [ "$estado" == "$estado2" ];
 	then
-		#Como este script se ejecuta cada 5 minutos, primero matamos los procesos 			anteriores
+		#Como este script se ejecuta cada 5 minutos, primero matamos los procesos anteriores
 		killall conexiones.sh
 		killall aplicaciones.sh
 		killall comprobacion.sh
