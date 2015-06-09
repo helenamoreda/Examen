@@ -8,23 +8,13 @@
 #Variable que almacena la IP fija que tiene el servidor
 IPservidor="192.168.1.176"
 
-#Borramos el log donde almacenamos el estado de la conexión
-if test -f /root/.jvscripts/servidor/conexion.txt
-	then
-		rm /root/.jvscripts/servidor/conexion.txt
-fi
 
 #Comprobamos el si tenemos conexión y guardamos el resultado en un archivo txt
-nmap $IPservidor -p 3333 | grep 3333 > /root/.jvscripts/servidor/conexion.txt
-
-#Guardamos en una variable el contenido del txt
-estado=`cat /root/.jvscripts/servidor/conexion.txt`
+estado=`nmap $IPservidor -p 3333 | grep 3333`
 
 #Guardamos en el estado que nos aparecería en el caso de que tengamos conexión
 estado2="3333/tcp open  dec-notes"
 
-#Guardamos en el estado que nos aparecería en el caso de que no tengamos conexión
-estado3="3333/tcp closed  dec-notes"
 
 #Si el estado actual coincide con el estado de conexión abierta:
 if [ "$estado" == "$estado2" ];
