@@ -12,9 +12,9 @@
 # cut corta la segunda columna
 iprouter=`sudo route -n|grep UG |tr -s " "|cut -d " " -f2`
 
-#Obtengo la mac del router donde:
-
+#Obtengo la mac del router
 macrouter=`sudo arp -n|grep -w $iprouter|tr -s " "|cut -d " " -f3`
+
 
 if test -f /etc/mac_router.txt
 	then 
