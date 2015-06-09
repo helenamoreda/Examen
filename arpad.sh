@@ -12,9 +12,9 @@
 # cut corta la segunda columna
 iprouter=`sudo route -n|grep UG |tr -s " "|cut -d " " -f2`
 
-#Obtengo la mac del router donde:
-
+#Obtengo la mac del router
 macrouter=`sudo arp -n|grep -w $iprouter|tr -s " "|cut -d " " -f3`
+
 
 if test -f /etc/mac_router.txt
 	then 
@@ -25,9 +25,7 @@ else
 	
 fi
 	
-opcion=0
-while [ $opcion -eq 0 ];
-do
+
 comprobar=`sudo arp -n|grep -w $iprouter|tr -s " "|cut -d " " -f3`
 mac=`sudo cat /etc/mac_router.txt`
 	if [ "$mac" != "$comprobar" ]
@@ -35,8 +33,7 @@ mac=`sudo cat /etc/mac_router.txt`
 			xhost local:
 			DISPLAY=:0 zenity --warning --text="La mac del router ha cambiado, es posible que esté siendo víctima de un ataque Man in the middle. Su anterior mac era $mac"
 			break
-	fi
-done
+
 	
 
 
