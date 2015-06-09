@@ -9,7 +9,7 @@
 IPservidor="192.168.1.176"
 
 
-#Comprobamos el si tenemos conexión y guardamos el resultado en un archivo txt
+#Comprobamos el si tenemos conexión y guardamos el resultado en una variable
 estado=`nmap $IPservidor -p 3333 | grep 3333`
 
 #Guardamos en el estado que nos aparecería en el caso de que tengamos conexión
