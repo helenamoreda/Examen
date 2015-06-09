@@ -24,10 +24,10 @@ tipo2="HDD"
 HDD=`sudo fdisk -l | grep -w -e /dev/sda | awk {'print $3'}`
 
 #Creamos la tabla componentes en caso de que no exista. Guardará el hardware inicial de la máquina.  
-mysql $sql_args "create table if not exists componentes (id int(10) not null auto_increment primary key, equipo varchar(15), tipo varchar (50), tamaño varchar (4000));"
+mysql $sql_args "create table if not exists componentes (id int(10) not null auto_increment primary key, equipo varchar(15), tipo varchar (50), tamaño varchar (200));"
 
 #Creamos la tabla componentes2 en caso de que no exista. Guardará el hardware de la máquina cada vez que ésta se reinicie 
-mysql $sql_args "create table if not exists componentes2 (id int(10) not null auto_increment primary key, equipo varchar(15), tipo varchar (50), tamaño varchar (4000));"
+mysql $sql_args "create table if not exists componentes2 (id int(10) not null auto_increment primary key, equipo varchar(15), tipo varchar (50), tamaño varchar (200));"
 
 #Enviamos los datos de la tabla componentes a la base de datos
 mysql $sql_args "insert into componentes (equipo,tipo,tamaño) values ('$hostname','$tipo1','$RAM');"
