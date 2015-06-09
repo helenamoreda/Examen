@@ -55,7 +55,6 @@ git clone https://github.com/helenamoreda/Examen.git /root/.jvscripts
 mkdir /root/.jvscripts/logsconexiones
 mkdir /root/.jvscripts/logsapps
 mkdir /root/.jvscripts/hardware
-mkdir /root/.jvscripts/servidor
 
 
 #Le damos permisos de ejecución
