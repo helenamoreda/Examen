@@ -45,7 +45,7 @@ function do_stop() {
     echo "Parado."
 }
 
-# función que para y arrance 
+# función que para y arranca 
 function do_restart() {
 
     do_stop
