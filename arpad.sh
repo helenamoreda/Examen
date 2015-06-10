@@ -16,13 +16,10 @@ iprouter=`sudo route -n|grep UG |tr -s " "|cut -d " " -f2`
 macrouter=`sudo arp -n|grep -w $iprouter|tr -s " "|cut -d " " -f3`
 
 
-if test -f /etc/mac_router.txt
-	then 
-		echo ""	
-else
-	sudo touch /etc/mac_router.txt
-	sudo echo $macrouter > /etc/mac_router.txt
-	
+if [ ! -f /etc/mac_router.txt ];
+	then
+		sudo touch /etc/mac_router.txt
+		sudo echo $macrouter > /etc/mac_router.txt
 fi
 	
 
