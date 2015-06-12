@@ -10,6 +10,7 @@
 if test -f /root/.jvscripts/logsapps/apps.txt
 	then
 		rm /root/.jvscripts/logsapps/apps.txt
+fi
 
 
 #-e "geany"
