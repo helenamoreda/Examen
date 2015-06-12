@@ -15,21 +15,26 @@ iprouter=`sudo route -n|grep UG |tr -s " "|cut -d " " -f2`
 #Obtengo la mac del router
 macrouter=`sudo arp -n|grep -w $iprouter|tr -s " "|cut -d " " -f3`
 
-
+#En el caso de que el fichero que contiene la mac no exista lo creamos
 if [ ! -f /etc/mac_router.txt ];
 	then
 		sudo touch /etc/mac_router.txt
 		sudo echo $macrouter > /etc/mac_router.txt
 fi
 	
-
+#Metemos en una variable la mac actual del router
 comprobar=`sudo arp -n|grep -w $iprouter|tr -s " "|cut -d " " -f3`
+
+#Metemos en una variable el contenido del fichero que contiene la mac
 mac=`sudo cat /etc/mac_router.txt`
-	if [ "$mac" != "$comprobar" ]
-		then
-			xhost local:
-			DISPLAY=:0 zenity --warning --text="La mac del router ha cambiado, es posible que esté siendo víctima de un ataque Man in the middle. Su anterior mac era $mac"
-			break
+
+#En el caso de que no coincidan se enviará una alerta mediante ventana emergente
+if [ "$mac" != "$comprobar" ]
+	then
+		xhost local:
+		DISPLAY=:0 zenity --warning --text="La mac del router ha cambiado, es posible que esté siendo víctima de un ataque Man in the middle. Su anterior mac era $mac"
+		break
+fi
 
 	
 
