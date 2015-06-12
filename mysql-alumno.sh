@@ -22,6 +22,7 @@ RAM=`free | grep Mem |  awk {'print $2'}`
 tipo2="HDD"
 #Guardamos la capacidad de nuestros discos duros
 HDD=`sudo fdisk -l | grep -w -e /dev/sda | awk {'print $3'}`
+HDD2=`sudo fdisk -l | grep -w -e /dev/sdb | awk {'print $3'}`
 
 #Creamos la tabla componentes en caso de que no exista. Guardará el hardware inicial de la máquina.  
 mysql $sql_args "create table if not exists componentes (id int(10) not null auto_increment primary key, equipo varchar(15), tipo varchar (50), tamaño varchar (200));"
