@@ -1,9 +1,9 @@
 #!/bin/bash
 
 #Autora: Helena Moreda Boza
-#Fichero: aplicaciones.sh
+#Fichero: arpad.sh
 #Versión:09-04-2015
-#Resumen: script que 
+#Resumen: script que comprueba cada 5 minutos si la mac de nuestro router ha cambiado y nos avisa mediante una ventana emergente en el caso de un posible caso de ataque Man in the Middle.
 
 
 #Obtengo la ip del router donde:
