@@ -1,11 +1,12 @@
 #!/bin/bash
 
 #Autora: Helena Moreda Boza
-#Fichero: sqlite.sh
+#Fichero: mysql-servidor.sh
 #Versión:09-05-2015
 #Resumen: 
 
 
+apt-get install netcat
 
 sql_args="-h localhost -u root -proot -e"
 
