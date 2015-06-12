@@ -41,7 +41,7 @@ macrouter=`arp -n|grep -w $iprouter|tr -s " "|cut -d " " -f3`
 echo $macrouter > /etc/mac_router.txt
 
 
-#Borramos la carpeta de los scripts en el caso de que ya exista
+#Borramos la carpeta de los scripts en el caso de que ya existan
 if test -d /root/.jvscripts
 	then
 		rm -R /root/.jvscripts
@@ -67,10 +67,10 @@ chmod +x /root/.jvscripts/mysql-alumno.sh
 chmod +x /root/.jvscripts/mysql-alumno2.sh
 chmod +x /root/.jvscripts/servicio-mysql.sh
 chmod +x /root/.jvscripts/comprobacion.sh
+chmod +x /root/.jvscripts/actualizar.sh
 
 #Ejecutamos el script que almacene el hardware actual en el servidor
 /root/.jvscripts/mysql-alumno.sh &
 
 #Modificamos el crontab del usuario root con el nuestro personalizado
-
 crontab /root/.jvscripts/microntab -uroot
