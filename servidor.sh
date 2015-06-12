@@ -6,7 +6,7 @@
 #Resumen: Script que comprueba si tenemos conexión con el servidor a través del puerto 3333. En caso de que tengamos conexión arrancará los scripts de “aplicaciones.sh” y “conexiones.sh”. 
 
 #Variable que almacena la IP fija que tiene el servidor
-IPservidor="172.17.7.20"
+IPservidor="172.16.171.38"
 
 
 #Comprobamos el si tenemos conexión y guardamos el resultado en una variable
