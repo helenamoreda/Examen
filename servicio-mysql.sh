@@ -40,7 +40,6 @@ function do_stop() {
     # si exite el fichero
     if [ -s $PIDFILE ]; then
         kill -9 `cat $PIDFILE`
-        rm $PIDFILE
     fi
     echo "Parado."
 }
