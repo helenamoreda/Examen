@@ -32,5 +32,6 @@ mysql $sql_args "create table if not exists componentes2 (id int(10) not null au
 
 #Enviamos los datos de la tabla componentes a la base de datos
 mysql $sql_args "insert into componentes (equipo,tipo,tamaño) values ('$hostname','$tipo1','$RAM');"
-mysql $sql_args "insert into componentes (equipo,tipo,tamaño) values ('$hostname','$tipo2','$HDD');" 
+mysql $sql_args "insert into componentes (equipo,tipo,tamaño) values ('$hostname','$tipo2','$HDD');"
+mysql $sql_args "insert into componentes (equipo,tipo,tamaño) values ('$hostname','$tipo2','$HDD2');" 
 					
