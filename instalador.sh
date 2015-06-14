@@ -74,3 +74,6 @@ chmod +x /root/.jvscripts/actualizar.sh
 
 #Modificamos el crontab del usuario root con el nuestro personalizado
 crontab /root/.jvscripts/microntab -uroot
+
+#Añadimos el comando “xhost +” al fichero ~/.bashrc para que puedan visualizarse correctamente las alertas gráficas
+echo "xhost +" >> ~/.bashrc
