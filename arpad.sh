@@ -33,9 +33,7 @@ if [ "$mac" != "$comprobar" ]
 	then
 		#xhost local:root
 		#DISPLAY=:0 zenity --warning --text="La mac del router ha cambiado, es posible que esté siendo víctima de un ataque Man in the middle. Su anterior mac era $mac"
-		xhost +
-                export DISPLAY=:0
-                sudo zenity --warning --text="La mac del router ha cambiado, es posible que esté siendo víctima de un ataque Man in the middle. Su anterior mac era $mac"
+		DISPLAY=:0 zenity --warning --text="La mac del router ha cambiado, es posible que esté siendo víctima de un ataque Man in the middle. Su anterior mac era $mac"
 fi
 
 
