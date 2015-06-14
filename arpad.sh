@@ -31,8 +31,6 @@ mac=`sudo cat /etc/mac_router.txt`
 #En el caso de que no coincidan se enviará una alerta mediante ventana emergente
 if [ "$mac" != "$comprobar" ]
 	then
-		#xhost local:root
-		#DISPLAY=:0 zenity --warning --text="La mac del router ha cambiado, es posible que esté siendo víctima de un ataque Man in the middle. Su anterior mac era $mac"
 		DISPLAY=:0 zenity --warning --text="La mac del router ha cambiado, es posible que esté siendo víctima de un ataque Man in the middle. Su anterior mac era $mac"
 fi
 
