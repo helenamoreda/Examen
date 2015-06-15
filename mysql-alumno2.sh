@@ -25,8 +25,8 @@ RAM=`free | grep Mem |  awk {'print $2'}`
 #Guardamos el tipo de componente
 tipo2="HDD"
 #Guardamos la capacidad de nuestros discos duros
-HDD=`sudo fdisk -l | grep -w -e /dev/sda | awk {'print $3'}`
-HDD2=`sudo fdisk -l | grep -w -e /dev/sdb | awk {'print $3'}`
+HDD=`sudo fdisk -l | grep -w -e /dev/sda | awk {'print $3,$4'} | cut -d "," -f1`
+HDD2=`sudo fdisk -l | grep -w -e /dev/sdb | awk {'print $3,$4'} | cut -d "," -f1`
 
 #Insertamos los datos a la tabla componentes2 de base de datos
 mysql $sql_args "insert into componentes2 (equipo,tipo,tamaño) values ('$hostname','$tipo1','$RAM');"
