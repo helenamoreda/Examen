@@ -3,7 +3,7 @@
 #Resumen: Script que se ejecuta al reiniciar la máquina y envía la capacidad del disco duro y RAM periódicamente como un servicio.
 
 #Variable que almacena la IP fija que tiene el servidor
-IPservidor="192.168.176"
+IPservidor="192.168.1.176"
 
 # Se montan los parámetros de conexión
 sql_args="-h $IPservidor -u root -proot hardware -e"
