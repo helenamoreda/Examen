@@ -59,6 +59,7 @@ if [ "$tipocambiado" != "" ]
 		#Con -u el asunto y -m el mensaje del correo
 		#Con -xu debemos volver a especificar el correo remitente y con -xp la contraseña del correo remitente
 		sendemail -f cambioshardwarejulioverne@hotmail.com -t helena1094@hotmail.com -s smtp.live.com -u \ "Asunto Cambios en el hardware" -m "Ha habido un cambio en el componente $tipocambiado del equipo $hostname. Su anterior capacidad era $size y ahora es $size2" -v -xu cambioshardwarejulioverne@hotmail.com -xp Cambioshardware -o tls=yes
+		mysql $sql_args "update componentes set tamaño where (select * from componentes2 where equipo=$hostname and tipo=);"
 		sh /root/.jvscripts/servicio-mysql.sh start
 	else
 		#Si no ha habido ningún cambio esperará 10 minutos y volverá a comprobar
