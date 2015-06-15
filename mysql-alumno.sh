@@ -1,11 +1,11 @@
 #!/bin/bash
-#Autora: Helena Moreda Boza
+#Autora: Helena Moreda Boz
 #Fichero: mysql-alumno.sh
 #Versión:09-05-2015
 #Resumen: Script que se ejecuta con el instalador y envía el hardware actual de la máquina a la base de datos del servidor
 
 #Variable que almacena la IP fija que tiene el servidor
-IPservidor="172.16.171.38"
+IPservidor="192.168.176"
 
 # Se montan los parámetros de conexión
 sql_args="-h $IPservidor -u root -proot hardware -e"
