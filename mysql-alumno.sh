@@ -20,6 +20,7 @@ RAM=`free | grep Mem |  awk {'print $2'}`
 
 #Guardamos el tipo de componente
 tipo2="HDD"
+tipo3="HDD2"
 #Guardamos la capacidad de nuestros discos duros
 HDD=`sudo fdisk -l | grep -w -e /dev/sda | awk {'print $3'}`
 HDD2=`sudo fdisk -l | grep -w -e /dev/sdb | awk {'print $3'}`
@@ -33,5 +34,5 @@ mysql $sql_args "create table if not exists componentes2 (id int(10) not null au
 #Enviamos los datos de la tabla componentes a la base de datos
 mysql $sql_args "insert into componentes (equipo,tipo,tamaño) values ('$hostname','$tipo1','$RAM');"
 mysql $sql_args "insert into componentes (equipo,tipo,tamaño) values ('$hostname','$tipo2','$HDD');"
-mysql $sql_args "insert into componentes (equipo,tipo,tamaño) values ('$hostname','$tipo2','$HDD2');" 
+mysql $sql_args "insert into componentes (equipo,tipo,tamaño) values ('$hostname','$tipo3','$HDD2');" 
 					
