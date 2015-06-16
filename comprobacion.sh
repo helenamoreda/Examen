@@ -17,11 +17,18 @@ PID2=`ps -aux | grep -e mysql-alumno2.sh |  grep -v grep | awk {'print $2'} | ta
 echo $PID2
 
 #En el caso de que no coincidan quiere decir que el script se ha parado y debe enviar un correo avisándonos
-if [ "$PID1" != "$PID2" ]
+
+if [ -s /root/.jvscripts/hardware/PID.txt ];
 	then
-		#Enviamos un correo donde -f es el remitente y -t el destinatario
-		#Con -s configuramos el servidor de correo SMTP
-		#Con -u el asunto y -m el mensaje del correo
-		#Con -xu debemos volver a especificar el correo remitente y con -xp la contraseña del correo remitente
+		if [ "$PID1" != "$PID2" ];
+			then
+			#Enviamos un correo donde -f es el remitente y -t el destinatario
+			#Con -s configuramos el servidor de correo SMTP
+			#Con -u el asunto y -m el mensaje del correo
+			#Con -xu debemos volver a especificar el correo remitente y con -xp la contraseña del correo remitente
+			sendemail -f cambioshardwarejulioverne@hotmail.com -t helena1094@hotmail.com -s smtp.live.com -u \ "Script parado" -m "El script mysql-alumno2.sh ha dejado de funcionar en el equipo $hostname" -v -xu cambioshardwarejulioverne@hotmail.com -xp Cambioshardware -o tls=yes
+		fi
+	else
 		sendemail -f cambioshardwarejulioverne@hotmail.com -t helena1094@hotmail.com -s smtp.live.com -u \ "Script parado" -m "El script mysql-alumno2.sh ha dejado de funcionar en el equipo $hostname" -v -xu cambioshardwarejulioverne@hotmail.com -xp Cambioshardware -o tls=yes
 fi
+	
