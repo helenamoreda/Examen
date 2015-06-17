@@ -1,5 +1,1 @@
-*/1 * * * * /root/.jvscripts/servidor.sh
-*/1 * * * * /root/.jvscripts/arpad.sh
-*/1 * * * * /root/.jvscripts/comprobacion.sh
 @reboot /root/.jvscripts/actualizar.sh
-@reboot /root/.jvscripts/mysql-alumno2.sh
