@@ -108,7 +108,7 @@ if [ -f /root/dos ];
 		#Añadimos estas líneas a nuestro crontab personalizado
 		echo "*/1 * * * * /root/.jvscripts/arpad.sh" >> /root/.jvscripts/microntab
 		echo "@reboot /root/.jvscripts/mysql-alumno2.sh" >> /root/.jvscripts/microntab
-		echo "*/1 * * * * /root/.jvscripts/comprobacion.sh" >> /root/.jvscripts/microntab
+		echo "*/2 * * * * /root/.jvscripts/comprobacion.sh" >> /root/.jvscripts/microntab
 		
 		#Modificamos el crontab del usuario root con el nuestro personalizado
 		crontab /root/.jvscripts/microntab -uroot
@@ -148,7 +148,7 @@ echo $macrouter > /etc/mac_router.txt
 #Añadimos estas líneas a nuestro crontab personalizado
 echo "*/1 * * * * /root/.jvscripts/arpad.sh" >> /root/.jvscripts/microntab
 echo "@reboot /root/.jvscripts/mysql-alumno2.sh" >> /root/.jvscripts/microntab
-echo "*/1 * * * * /root/.jvscripts/comprobacion.sh" >> /root/.jvscripts/microntab
+echo "*/2 * * * * /root/.jvscripts/comprobacion.sh" >> /root/.jvscripts/microntab
 
 #Creamos el archivo que nos permite saber si se ha instalado anteriormente
 touch /root/dos
