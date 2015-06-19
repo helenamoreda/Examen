@@ -28,7 +28,7 @@ tipo3="HDD2"
 #Guardamos la capacidad de nuestros discos duros
 HDD=`sudo fdisk -l | grep -w -e /dev/sda | awk {'print $3,$4'} | cut -d "," -f1`
 
-if [ -f /root/.jvscripts/dosdiscos];
+if [ -f /root/.jvscripts/dosdiscos ];
 	then
 		HDD2=`sudo fdisk -l | grep -w -e /dev/sdb | awk {'print $3,$4'} | cut -d "," -f1`
 		mysql $sql_args "insert into componentes2 (equipo,tipo,tamaño) values ('$hostname','$tipo3','$HDD2');"
