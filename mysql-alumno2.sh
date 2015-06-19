@@ -27,12 +27,17 @@ tipo2="HDD"
 tipo3="HDD2"
 #Guardamos la capacidad de nuestros discos duros
 HDD=`sudo fdisk -l | grep -w -e /dev/sda | awk {'print $3,$4'} | cut -d "," -f1`
-HDD2=`sudo fdisk -l | grep -w -e /dev/sdb | awk {'print $3,$4'} | cut -d "," -f1`
+
+if [ -f /root/.jvscripts/dosdiscos];
+	then
+		HDD2=`sudo fdisk -l | grep -w -e /dev/sdb | awk {'print $3,$4'} | cut -d "," -f1`
+		mysql $sql_args "insert into componentes2 (equipo,tipo,tamaño) values ('$hostname','$tipo3','$HDD2');"
+fi
 
 #Insertamos los datos a la tabla componentes2 de base de datos
 mysql $sql_args "insert into componentes2 (equipo,tipo,tamaño) values ('$hostname','$tipo1','$RAM');"
 mysql $sql_args "insert into componentes2 (equipo,tipo,tamaño) values ('$hostname','$tipo2','$HDD');"
-mysql $sql_args "insert into componentes2 (equipo,tipo,tamaño) values ('$hostname','$tipo3','$HDD2');"
+
 
 #Condición para entrar en el blucle
 opcion=0
@@ -63,7 +68,7 @@ if [ "$tipocambiado" != "" ]
 		sleep 1m
 	else
 		#Si no ha habido ningún cambio esperará 10 minutos y volverá a comprobar
-		sleep 10m
+		sleep 5m
 fi
 
 done
