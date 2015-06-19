@@ -36,7 +36,7 @@ do
 if [ -f /root/.jvscripts/dosdiscos ];
 	then
 		HDD2=`sudo fdisk -l | grep -w -e /dev/sdb | awk {'print $3,$4'} | cut -d "," -f1`
-		mysql $sql_args "update componentes set tamaño='$HDD2' where equipo='$hostname' and tipo='$tipo3';"
+		mysql $sql_args "update componentes2 set tamaño='$HDD2' where equipo='$hostname' and tipo='$tipo3';"
 fi
 
 #Insertamos los datos a la tabla componentes2 de base de datos
