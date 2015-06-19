@@ -28,6 +28,8 @@ tipo3="HDD2"
 #Guardamos la capacidad de nuestros discos duros
 HDD=`sudo fdisk -l | grep -w -e /dev/sda | awk {'print $3,$4'} | cut -d "," -f1`
 
+while [ $opcion -eq 0 ];
+do
 if [ -f /root/.jvscripts/dosdiscos ];
 	then
 		HDD2=`sudo fdisk -l | grep -w -e /dev/sdb | awk {'print $3,$4'} | cut -d "," -f1`
@@ -42,8 +44,7 @@ mysql $sql_args "insert into componentes2 (equipo,tipo,tamaño) values ('$hostna
 #Condición para entrar en el blucle
 opcion=0
 
-while [ $opcion -eq 0 ];
-do
+
 #Hacemos una consulta mysql para saber qué tipo de componente ha cambiado en el equipo y metemos el resultado en un txt
 mysql $sql_args "select tipo from componentes as t1 where not exists(select equipo, tipo, tamaño from componentes2 as t2 where t1.equipo=t2.equipo and t1.tipo=t2.tipo and t1.tamaño=t2.tamaño);" | tail -1 > /root/.jvscripts/tipocambiado
 #Hacemos una consulta mysql para saber qué tamaño tenía anteriormente y metemos el resultado en un txt
@@ -66,9 +67,8 @@ if [ "$tipocambiado" != "" ];
 				#Con -u el asunto y -m el mensaje del correo
 				#Con -xu debemos volver a especificar el correo remitente y con -xp la contraseña del correo remitente
 				sendemail -f cambioshardwarejulioverne@hotmail.com -t helena1094@hotmail.com -s smtp.live.com -u \ "Asunto Cambios en el hardware" -m "Ha habido un cambio en el componente $tipocambiado del equipo $hostname. Su anterior capacidad era $size y ahora es $size2" -v -xu cambioshardwarejulioverne@hotmail.com -xp Cambioshardware -o tls=yes
-				mysql $sql_args "update componentes set tamaño='$size2' where equipo='$hostname' and tipo='$tipocambiado';"
+				mysql $sql_args "delete from componentes where tipo='HDD2'"
 				rm /root/.jvscripts/dosdiscos
-				touch /root/.jvscripts/deberiaborrar
 				sleep 1m
 			else
 				sendemail -f cambioshardwarejulioverne@hotmail.com -t helena1094@hotmail.com -s smtp.live.com -u \ "Asunto Cambios en el hardware" -m "Ha habido un cambio en el componente $tipocambiado del equipo $hostname. Su anterior capacidad era $size y ahora es $size2 blabla" -v -xu cambioshardwarejulioverne@hotmail.com -xp Cambioshardware -o tls=yes
