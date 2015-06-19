@@ -66,9 +66,6 @@ if [ -f /root/uno ];
 		zenity --warning --text="La opción 1 ya ha sido instalada"
 	else
 	
-#Añadimos el comando "xhost +"" al fichero ~/.bashrc para que puedan visualizarse correctamente las alertas gráficas
-echo "xhost +" >> ~/.bashrc
-
 #Añadimos una línea al nuestro crontab personalizado
 echo "*/1 * * * * /root/.jvscripts/servidor.sh" >> /root/.jvscripts/microntab
 
@@ -120,9 +117,6 @@ fi
 
 #Función en caso de que elijamos instalar ambas opciones. 
 function ambos {
-
-#Añadimos el comando "xhost +" al fichero ~/.bashrc para que puedan visualizarse correctamente las alertas gráficas
-echo "xhost +" >> ~/.bashrc
 
 #Añadimos una línea al nuestro crontab personalizado
 echo "*/1 * * * * /root/.jvscripts/servidor.sh" >> /root/.jvscripts/microntab
