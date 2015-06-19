@@ -8,8 +8,6 @@ IPservidor="192.168.1.177"
 # Se montan los parámetros de conexión
 sql_args="-h $IPservidor -u root -proot hardware -e"
 
-#Borramos los datos antiguos de la tabla componentes2
-mysql $sql_args "truncate table componentes2"
 
 #Guardamos el nombre de la máquina
 hostname=`hostname`
@@ -33,6 +31,10 @@ opcion=0
 
 while [ $opcion -eq 0 ];
 do
+
+#Borramos los datos antiguos de la tabla componentes2
+mysql $sql_args "truncate table componentes2"
+
 if [ -f /root/.jvscripts/dosdiscos ];
 	then
 		HDD2=`sudo fdisk -l | grep -w -e /dev/sdb | awk {'print $3,$4'} | cut -d "," -f1`
