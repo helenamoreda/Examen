@@ -37,6 +37,7 @@ if [ "$HDD2" != "" ];
 		if [ "$opcion" == "Si" ];
 			then
 				mysql $sql_args "insert into componentes (equipo,tipo,tamaño) values ('$hostname','$tipo3','$HDD2');"
+				mysql $sql_args "insert into componentes2 (equipo,tipo,tamaño) values ('$hostname','$tipo3','$HDD2');"
 				touch /root/.jvscripts/dosdiscos
 				chmod 777 /root/.jvscripts/dosdiscos
 			else
@@ -49,4 +50,6 @@ fi
 #Enviamos los datos de la tabla componentes a la base de datos
 mysql $sql_args "insert into componentes (equipo,tipo,tamaño) values ('$hostname','$tipo1','$RAM');"
 mysql $sql_args "insert into componentes (equipo,tipo,tamaño) values ('$hostname','$tipo2','$HDD');"
+mysql $sql_args "insert into componentes2 (equipo,tipo,tamaño) values ('$hostname','$tipo1','$RAM');"
+mysql $sql_args "insert into componentes2 (equipo,tipo,tamaño) values ('$hostname','$tipo2','$HDD');"
 					
