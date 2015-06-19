@@ -34,13 +34,13 @@ mysql $sql_args "create table if not exists componentes2 (id int(10) not null au
 if [ "$HDD2" != "" ]; 
 	then
 		opcion=`zenity --list --column "¿Tiene usted dos discos duros fijos?" "Si" "No"`
-			if [ "$opcion" == "Si" ];
-				then
-					mysql $sql_args "insert into componentes2 (equipo,tipo,tamaño) values ('$hostname','$tipo3','$HDD2');"
-					touch /root/.jvscripts/dosdiscos
-				else
-					zenity --warning --text "Usted tiene conectado un pendrive"
-			fi
+		if [ "$opcion" == "Si" ];
+			then
+				mysql $sql_args "insert into componentes (equipo,tipo,tamaño) values ('$hostname','$tipo3','$HDD2');"
+				touch /root/.jvscripts/dosdiscos
+			else
+				zenity --warning --text "Usted tiene conectado un pendrive"
+		fi
 fi
 
 
