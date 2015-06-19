@@ -21,7 +21,7 @@ opcion=0
 while [ $opcion -eq 0 ];
 do
 	#Buscamos con ps los procesos cuyo nombres coincidan con las aplicaciones que no estarán permitidas en los exámenes y los metemos en el log de aplicaciones.
-	echo `ps -A | grep -w -e "chrome" -e "chrome-sandbox" -e "firefox" -e "evince" -e "empathy"  -e "gedit" -e "vi" -e "nano" -e "soffice.bin" | awk {'print $4'} | sort | uniq  > /root/.jvscripts/logsapps/apps.txt`
+	echo `ps -A | grep -w -e "firefox" -e "evince" -e "empathy"  -e "gedit" -e "vi" -e "nano" -e "soffice.bin" | awk {'print $4'} | sort | uniq  > /root/.jvscripts/logsapps/apps.txt`
 
 #Si el log de las aplicaciones no está vacío, leemos línea a línea las apps abiertas y matamos su proceso
 if test -s /root/.jvscripts/logsapps/apps.txt
