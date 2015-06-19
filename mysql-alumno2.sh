@@ -28,6 +28,9 @@ tipo3="HDD2"
 #Guardamos la capacidad de nuestros discos duros
 HDD=`sudo fdisk -l | grep -w -e /dev/sda | awk {'print $3,$4'} | cut -d "," -f1`
 
+#Condición para entrar en el blucle
+opcion=0
+
 while [ $opcion -eq 0 ];
 do
 if [ -f /root/.jvscripts/dosdiscos ];
@@ -40,9 +43,6 @@ fi
 mysql $sql_args "insert into componentes2 (equipo,tipo,tamaño) values ('$hostname','$tipo1','$RAM');"
 mysql $sql_args "insert into componentes2 (equipo,tipo,tamaño) values ('$hostname','$tipo2','$HDD');"
 
-
-#Condición para entrar en el blucle
-opcion=0
 
 
 #Hacemos una consulta mysql para saber qué tipo de componente ha cambiado en el equipo y metemos el resultado en un txt
@@ -67,7 +67,7 @@ if [ "$tipocambiado" != "" ];
 				#Con -u el asunto y -m el mensaje del correo
 				#Con -xu debemos volver a especificar el correo remitente y con -xp la contraseña del correo remitente
 				sendemail -f cambioshardwarejulioverne@hotmail.com -t helena1094@hotmail.com -s smtp.live.com -u \ "Asunto Cambios en el hardware" -m "Ha habido un cambio en el componente $tipocambiado del equipo $hostname. Su anterior capacidad era $size y ahora es $size2" -v -xu cambioshardwarejulioverne@hotmail.com -xp Cambioshardware -o tls=yes
-				mysql $sql_args "delete from componentes where tipo='HDD2'"
+				mysql $sql_args "delete from componentes where tipo='$tipocambiado' and equipo='$hostname';"
 				rm /root/.jvscripts/dosdiscos
 				sleep 1m
 			else
