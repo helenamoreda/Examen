@@ -38,6 +38,7 @@ if [ "$HDD2" != "" ];
 			then
 				mysql $sql_args "insert into componentes (equipo,tipo,tamaño) values ('$hostname','$tipo3','$HDD2');"
 				touch /root/.jvscripts/dosdiscos
+				chmod 777 /root/.jvscripts/dosdiscos
 			else
 				zenity --warning --text "Usted tiene conectado un pendrive"
 		fi
