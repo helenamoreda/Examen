@@ -5,6 +5,10 @@
 #Versión:09-04-2015
 #Resumen: script que comprueba cada 5 minutos si la mac de nuestro router ha cambiado y nos avisa mediante una ventana emergente en el caso de un posible caso de ataque Man in the Middle.
 
+#Exportamos la pantalla para que puedan visualizarse las alertas
+pantalla=":0"
+usuario_conectado=`w | grep init | grep $pantalla | awk {'print $1'}` 
+export XAUTHORITY=/home/$usuario_conectado/.Xauthority
 
 #Obtengo la ip del router donde:
 # -n Muestra la tabla de enrutamiento en formato numérico [dirección IP]
