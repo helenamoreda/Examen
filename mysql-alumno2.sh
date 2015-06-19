@@ -57,9 +57,9 @@ size=`cat /root/.jvscripts/tamaño1`
 size2=`cat /root/.jvscripts/tamaño2`
 
 #En el caso de que haya un tipo cambiado, enviará un e-mail avisándonos
-if [ "$tipocambiado" != "" ]
+if [ "$tipocambiado" != "" ];
 	then
-		if [ "$tipocambiado" == "HDD2" ];
+		if [ "$tipocambiado" = "HDD2" ];
 			then
 				#Enviamos un correo donde -f es el remitente y -t el destinatario
 				#Con -s configuramos el servidor de correo SMTP
@@ -71,7 +71,7 @@ if [ "$tipocambiado" != "" ]
 				touch /root/.jvscripts/deberiaborrar
 				sleep 1m
 			else
-				sendemail -f cambioshardwarejulioverne@hotmail.com -t helena1094@hotmail.com -s smtp.live.com -u \ "Asunto Cambios en el hardware" -m "Ha habido un cambio en el componente $tipocambiado del equipo $hostname. Su anterior capacidad era $size y ahora es $size2" -v -xu cambioshardwarejulioverne@hotmail.com -xp Cambioshardware -o tls=yes
+				sendemail -f cambioshardwarejulioverne@hotmail.com -t helena1094@hotmail.com -s smtp.live.com -u \ "Asunto Cambios en el hardware" -m "Ha habido un cambio en el componente $tipocambiado del equipo $hostname. Su anterior capacidad era $size y ahora es $size2 blabla" -v -xu cambioshardwarejulioverne@hotmail.com -xp Cambioshardware -o tls=yes
 				mysql $sql_args "update componentes set tamaño='$size2' where equipo='$hostname' and tipo='$tipocambiado';"
 		fi
 fi
