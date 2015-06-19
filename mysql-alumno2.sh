@@ -32,18 +32,16 @@ opcion=0
 while [ $opcion -eq 0 ];
 do
 
-#Borramos los datos antiguos de la tabla componentes2
-mysql $sql_args "truncate table componentes2"
 
 if [ -f /root/.jvscripts/dosdiscos ];
 	then
 		HDD2=`sudo fdisk -l | grep -w -e /dev/sdb | awk {'print $3,$4'} | cut -d "," -f1`
-		mysql $sql_args "insert into componentes2 (equipo,tipo,tamaño) values ('$hostname','$tipo3','$HDD2');"
+		mysql $sql_args "update componentes set tamaño='$HDD2' where equipo='$hostname' and tipo='$tipo3';"
 fi
 
 #Insertamos los datos a la tabla componentes2 de base de datos
-mysql $sql_args "insert into componentes2 (equipo,tipo,tamaño) values ('$hostname','$tipo1','$RAM');"
-mysql $sql_args "insert into componentes2 (equipo,tipo,tamaño) values ('$hostname','$tipo2','$HDD');"
+mysql $sql_args "update componentes set tamaño='$RAM' where equipo='$hostname' and tipo='$tipo1';"
+mysql $sql_args "update componentes set tamaño='$HDD' where equipo='$hostname' and tipo='$tipo2';"
 
 
 
