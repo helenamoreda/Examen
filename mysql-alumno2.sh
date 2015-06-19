@@ -40,8 +40,8 @@ if [ -f /root/.jvscripts/dosdiscos ];
 fi
 
 #Insertamos los datos a la tabla componentes2 de base de datos
-mysql $sql_args "update componentes set tamaño='$RAM' where equipo='$hostname' and tipo='$tipo1';"
-mysql $sql_args "update componentes set tamaño='$HDD' where equipo='$hostname' and tipo='$tipo2';"
+mysql $sql_args "update componentes2 set tamaño='$RAM' where equipo='$hostname' and tipo='$tipo1';"
+mysql $sql_args "update componentes2 set tamaño='$HDD' where equipo='$hostname' and tipo='$tipo2';"
 
 
 
