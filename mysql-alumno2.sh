@@ -20,10 +20,10 @@ tipo1="Memoria RAM"
 #Guardamos la capacidad de nuestra memoria ram
 RAM=`free | grep Mem |  awk {'print $2'}`
 
-#Guardamos el tipo de componente
+#Guardamos los tipos de componentes
 tipo2="HDD"
 tipo3="HDD2"
-#Guardamos la capacidad de nuestros discos duros
+#Guardamos la capacidad de nuestro disco duro principal
 HDD=`sudo fdisk -l | grep -w -e /dev/sda | awk {'print $3,$4'} | cut -d "," -f1`
 
 #Condición para entrar en el blucle
@@ -32,14 +32,16 @@ opcion=0
 while [ $opcion -eq 0 ];
 do
 
-
+#Si existe el fichero quiere decir que tenemos dos discos duros instalados
 if [ -f /root/.jvscripts/dosdiscos ];
 	then
+		#Guardamos la capacidad del segundo disco duro en una variable
 		HDD2=`sudo fdisk -l | grep -w -e /dev/sdb | awk {'print $3,$4'} | cut -d "," -f1`
+		#Actualizamos los datos de la tabla componentes2
 		mysql $sql_args "update componentes2 set tamaño='$HDD2' where equipo='$hostname' and tipo='$tipo3';"
 fi
 
-#Insertamos los datos a la tabla componentes2 de base de datos
+#Actualizamos los datos a la tabla componentes2
 mysql $sql_args "update componentes2 set tamaño='$RAM' where equipo='$hostname' and tipo='$tipo1';"
 mysql $sql_args "update componentes2 set tamaño='$HDD' where equipo='$hostname' and tipo='$tipo2';"
 
@@ -57,14 +59,11 @@ tipocambiado=`cat /root/.jvscripts/tipocambiado`
 size=`cat /root/.jvscripts/tamaño1`
 size2=`cat /root/.jvscripts/tamaño2`
 
-if [ "$size2" == "" ];
-	then
-		size2=0
-fi
 
 #En el caso de que haya un tipo cambiado, enviará un e-mail avisándonos
 if [ "$tipocambiado" != "" ];
 	then
+		#Si el componente que ha cambiado es el segundo disco duro
 		if [ "$tipocambiado" = "HDD2" ];
 			then
 				#Enviamos un correo donde -f es el remitente y -t el destinatario
@@ -72,11 +71,14 @@ if [ "$tipocambiado" != "" ];
 				#Con -u el asunto y -m el mensaje del correo
 				#Con -xu debemos volver a especificar el correo remitente y con -xp la contraseña del correo remitente
 				sendemail -f helena1094@hotmail.com -t helena1094@gmail.com -s smtp.live.com -u \ "Asunto Cambios en el hardware" -m "Ha habido un cambio en el componente $tipocambiado del equipo $hostname. Su anterior capacidad era $size y ahora es $size2" -v -xu helena1094@hotmail.com -xp nightmare1 -o tls=yes
+				#Borramos la fila que contiene la capacidad del disco duro secundario
 				mysql $sql_args "delete from componentes where tipo='$tipocambiado' and equipo='$hostname';"
 				mysql $sql_args "delete from componentes2 where tipo='$tipocambiado' and equipo='$hostname';"
+				#Borramos el fichero que indicaba que hay dos discos duros instalados
 				rm /root/.jvscripts/dosdiscos
 				sleep 1m
 			else
+				#En el caso de que haya sido otro componente enviamos un email y actualizamos los datos
 				sendemail -f helena1094@hotmail.com -t helena1094@gmail.com -s smtp.live.com -u \ "Asunto Cambios en el hardware" -m "Ha habido un cambio en el componente $tipocambiado del equipo $hostname. Su anterior capacidad era $size y ahora es $size2" -v -xu helena1094@hotmail.com -xp nightmare1 -o tls=yes
 				mysql $sql_args "update componentes set tamaño='$size2' where equipo='$hostname' and tipo='$tipocambiado';"
 		fi
