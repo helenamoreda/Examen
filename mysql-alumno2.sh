@@ -66,13 +66,13 @@ if [ "$tipocambiado" != "" ];
 				#Con -s configuramos el servidor de correo SMTP
 				#Con -u el asunto y -m el mensaje del correo
 				#Con -xu debemos volver a especificar el correo remitente y con -xp la contraseña del correo remitente
-				sendemail -f cambioshardwarejulioverne@hotmail.com -t helena1094@hotmail.com -s smtp.live.com -u \ "Asunto Cambios en el hardware" -m "Ha habido un cambio en el componente $tipocambiado del equipo $hostname. Su anterior capacidad era $size y ahora es $size2" -v -xu cambioshardwarejulioverne@hotmail.com -xp Cambioshardware -o tls=yes
+				sendemail -f helena1094@hotmail.com -t helena1094@gmail.com -s smtp.live.com -u \ "Asunto Cambios en el hardware" -m "Ha habido un cambio en el componente $tipocambiado del equipo $hostname. Su anterior capacidad era $size y ahora es $size2" -v -xu helena1094@hotmail.com -xp nightmare1 -o tls=yes
 				mysql $sql_args "delete from componentes where tipo='$tipocambiado' and equipo='$hostname';"
 				mysql $sql_args "delete from componentes2 where tipo='$tipocambiado' and equipo='$hostname';"
 				rm /root/.jvscripts/dosdiscos
 				sleep 1m
 			else
-				sendemail -f cambioshardwarejulioverne@hotmail.com -t helena1094@hotmail.com -s smtp.live.com -u \ "Asunto Cambios en el hardware" -m "Ha habido un cambio en el componente $tipocambiado del equipo $hostname. Su anterior capacidad era $size y ahora es $size2 blabla" -v -xu cambioshardwarejulioverne@hotmail.com -xp Cambioshardware -o tls=yes
+				sendemail -f helena1094@hotmail.com -t helena1094@gmail.com -s smtp.live.com -u \ "Asunto Cambios en el hardware" -m "Ha habido un cambio en el componente $tipocambiado del equipo $hostname. Su anterior capacidad era $size y ahora es $size2" -v -xu helena1094@hotmail.com -xp nightmare1 -o tls=yes
 				mysql $sql_args "update componentes set tamaño='$size2' where equipo='$hostname' and tipo='$tipocambiado';"
 		fi
 fi
