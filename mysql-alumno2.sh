@@ -57,6 +57,11 @@ tipocambiado=`cat /root/.jvscripts/tipocambiado`
 size=`cat /root/.jvscripts/tamaño1`
 size2=`cat /root/.jvscripts/tamaño2`
 
+if [ "$size2" == "" ];
+	then
+		size2=0
+fi
+
 #En el caso de que haya un tipo cambiado, enviará un e-mail avisándonos
 if [ "$tipocambiado" != "" ];
 	then
