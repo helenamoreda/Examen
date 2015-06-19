@@ -31,8 +31,21 @@ mysql $sql_args "create table if not exists componentes (id int(10) not null aut
 #Creamos la tabla componentes2 en caso de que no exista. Guardará el hardware de la máquina cada vez que ésta se reinicie 
 mysql $sql_args "create table if not exists componentes2 (id int(10) not null auto_increment primary key, equipo varchar(15), tipo varchar (50), tamaño varchar (200));"
 
+if [ "$HDD2" != "" ]; 
+	then
+		opcion=`zenity --list --column "¿Tiene usted dos discos duros fijos?" "Si" "No"`
+			if [ "$opcion" == "Si" ];
+				then
+					mysql $sql_args "insert into componentes2 (equipo,tipo,tamaño) values ('$hostname','$tipo3','$HDD2');"
+					touch /root/.jvscripts/dosdiscos
+				else
+					zenity --warning --text "Usted tiene conectado un pendrive"
+			fi
+fi
+
+
+
 #Enviamos los datos de la tabla componentes a la base de datos
 mysql $sql_args "insert into componentes (equipo,tipo,tamaño) values ('$hostname','$tipo1','$RAM');"
 mysql $sql_args "insert into componentes (equipo,tipo,tamaño) values ('$hostname','$tipo2','$HDD');"
-mysql $sql_args "insert into componentes (equipo,tipo,tamaño) values ('$hostname','$tipo3','$HDD2');" 
 					
