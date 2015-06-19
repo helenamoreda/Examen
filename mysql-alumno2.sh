@@ -45,16 +45,16 @@ opcion=0
 while [ $opcion -eq 0 ];
 do
 #Hacemos una consulta mysql para saber qué tipo de componente ha cambiado en el equipo y metemos el resultado en un txt
-mysql $sql_args "select tipo from componentes as t1 where not exists(select equipo, tipo, tamaño from componentes2 as t2 where t1.equipo=t2.equipo and t1.tipo=t2.tipo and t1.tamaño=t2.tamaño);" | tail -1 > /tmp/tipocambiado
+mysql $sql_args "select tipo from componentes as t1 where not exists(select equipo, tipo, tamaño from componentes2 as t2 where t1.equipo=t2.equipo and t1.tipo=t2.tipo and t1.tamaño=t2.tamaño);" | tail -1 > /root/.jvscripts/tipocambiado
 #Hacemos una consulta mysql para saber qué tamaño tenía anteriormente y metemos el resultado en un txt
-mysql $sql_args "select tamaño from componentes as t1 where not exists(select equipo, tipo, tamaño from componentes2 as t2 where t1.equipo=t2.equipo and t1.tipo=t2.tipo and t1.tamaño=t2.tamaño);" | tail -1 > /tmp/tamaño1
+mysql $sql_args "select tamaño from componentes as t1 where not exists(select equipo, tipo, tamaño from componentes2 as t2 where t1.equipo=t2.equipo and t1.tipo=t2.tipo and t1.tamaño=t2.tamaño);" | tail -1 > /root/.jvscripts/tamaño1
 #Hacemos una consulta mysql para saber qué tamaño tiene actualmente y metemos el resultado en un txt
-mysql $sql_args "select tamaño from componentes2 as t1 where not exists(select equipo, tipo, tamaño from componentes as t2 where t1.equipo=t2.equipo and t1.tipo=t2.tipo and t1.tamaño=t2.tamaño);" | tail -1 > /tmp/tamaño2
+mysql $sql_args "select tamaño from componentes2 as t1 where not exists(select equipo, tipo, tamaño from componentes as t2 where t1.equipo=t2.equipo and t1.tipo=t2.tipo and t1.tamaño=t2.tamaño);" | tail -1 > /root/.jvscripts/tamaño2
 
 #Guardamos la información de los txt anteriores en variables
-tipocambiado=`cat /tmp/tipocambiado`
-size=`cat /tmp/tamaño1`
-size2=`cat /tmp/tamaño2`
+tipocambiado=`cat /root/.jvscripts/tipocambiado`
+size=`cat /root/.jvscripts/tamaño1`
+size2=`cat /root/.jvscripts/tamaño2`
 
 #En el caso de que haya un tipo cambiado, enviará un e-mail avisándonos
 if [ "$tipocambiado" != "" ]
