@@ -79,7 +79,7 @@ if [ "$tipocambiado" != "" ];
 				sleep 1m
 			else
 				#En el caso de que haya sido otro componente enviamos un email y actualizamos los datos
-				sendemail -f cambioshardwarejulioverne4@hotmail.com -t helena1094@gmail.com -s smtp.live.com -u \ "Cambios en el hardware" -m "Ha habido un cambio en el componente $tipocambiado del equipo $hostname. Su anterior capacidad era $size y ahora es $size2" -v -xu cambioshardwarejulioverne@hotmail.com -xp Cambioshardware -o tls=yes
+				sendemail -f cambioshardwarejulioverne@hotmail.com -t helena1094@gmail.com -s smtp.live.com -u \ "Cambios en el hardware" -m "Ha habido un cambio en el componente $tipocambiado del equipo $hostname. Su anterior capacidad era $size y ahora es $size2" -v -xu cambioshardwarejulioverne@hotmail.com -xp Cambioshardware -o tls=yes
 				mysql $sql_args "update componentes set tamaño='$size2' where equipo='$hostname' and tipo='$tipocambiado';"
 		fi
 fi
