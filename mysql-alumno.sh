@@ -5,7 +5,7 @@
 #Resumen: Script que se ejecuta con el instalador y envía el hardware actual de la máquina a la base de datos del servidor
 
 #Variable que almacena la IP fija que tiene el servidor
-IPservidor="192.168.1.177"
+IPservidor="172.16.171.38"
 
 # Se montan los parámetros de conexión
 sql_args="-h $IPservidor -u root -proot hardware -e"
